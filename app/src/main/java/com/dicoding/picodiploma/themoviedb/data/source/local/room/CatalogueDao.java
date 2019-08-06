@@ -21,13 +21,13 @@ import java.util.List;
 @Dao
 public interface CatalogueDao {
 
+    // todo ini disesuaikan (getBookmarkMovie, getBookmarkTvShow, getBookmarkMovieById, getBookmarkTvShowById, insertBookmarkMovie, insertBookmarkTvShow, deleteBookmarkTvShow, deleteBookmarkMovie)
     @WorkerThread
     @Query("SELECT * FROM movieentities")
     LiveData<List<Movie>> getMovie();
 
-    @Transaction
-    @Query("SELECT * FROM movieentities WHERE movieId = :movieId")
-    LiveData<MovieWithEntity> getMovieWithEntityById(String movieId);
+    @Query("SELECT * FROM MovieEntity WHERE movieId = :movieId")
+    LiveData<MovieEntity> getMovieWithEntityById(String movieId);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     long[] insertMovies(List<Movie> movies);

@@ -8,15 +8,10 @@ import androidx.room.Index;
 
 import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.TvShow;
 
-@Entity(tableName = "tvshowmoduleentities",
-        primaryKeys = {"moduleId", "courseId"},
-        foreignKeys = @ForeignKey(entity = TvShow.class,
-                parentColumns = "tvShowId",
-                childColumns = "tvShowId"),
-        indices = {@Index(value = "moduleId"),
-                @Index(value = "courseId")}
-)
+@Entity(tableName = "TvShowEntity")
 public class TvShowEntity {
+
+    // todo disamain TvShow.java
     @NonNull
     @ColumnInfo(name = "moduleId")
     private String mModuleId;

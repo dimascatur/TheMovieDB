@@ -7,6 +7,8 @@ import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.TvShow
 
 import java.util.List;
 
+
+// todo Ini tidak perlu
 public class TvShowWithEntity {
     @Embedded
     public TvShow tvShow;

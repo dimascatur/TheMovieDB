@@ -7,10 +7,11 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import com.dicoding.picodiploma.themoviedb.data.source.local.entity.MovieEntity;
+import com.dicoding.picodiploma.themoviedb.data.source.local.entity.TvShowEntity;
 import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.Movie;
 
 
-@Database(entities = {Movie.class, MovieEntity.class},
+@Database(entities = {TvShowEntity.class, MovieEntity.class},
         version = 1,
         exportSchema = false)
 public abstract class CatalogueDatabase extends RoomDatabase {

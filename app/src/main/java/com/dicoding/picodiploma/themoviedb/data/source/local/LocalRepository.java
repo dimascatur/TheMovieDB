@@ -9,6 +9,7 @@ import com.dicoding.picodiploma.themoviedb.data.source.local.room.CatalogueDao;
 
 import java.util.List;
 
+// todo ini sesuaikan dengan getBookmarkMovie, getBookmarkTvShow, getBookmarkMovieById, getBookmarkTvShowById, insertBookmarkMovie, insertBookmarkTvShow, deleteBookmarkTvShow, deleteBookmarkMovie
 public class LocalRepository {
    private final CatalogueDao mCatalogueDao;
 
@@ -25,9 +26,12 @@ public class LocalRepository {
         return INSTANCE;
     }
 
+    // getBookmarkMovie
     public LiveData<List<Movie>> getAllMovies() {
         return mCatalogueDao.getMovie();
     }
+
+    // getBookmarkMovieById
     public LiveData<MovieWithEntity> getMovieWithEntity(final String movieId) {
         return mCatalogueDao.getMovieWithEntityById(movieId);
     }
@@ -36,6 +40,7 @@ public class LocalRepository {
         mCatalogueDao.insertMovies(movies);
     }
 
+    // Tidak perlu
     public void setCourseBookmark(Movie movie) {
         mCatalogueDao.updateMovies(movie);
     }
