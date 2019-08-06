@@ -14,8 +14,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.bumptech.glide.request.RequestOptions;
 import com.dicoding.picodiploma.themoviedb.R;
-import com.dicoding.picodiploma.themoviedb.data.source.local.entity.MovieEntity;
-import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.Movie;
+import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.MovieEntity;
 import com.dicoding.picodiploma.themoviedb.utils.GlideApp;
 import com.dicoding.picodiploma.themoviedb.viewmodel.ViewModelFactory;
 
@@ -32,8 +31,6 @@ public class DetailMovieActivity extends AppCompatActivity {
 
     private DetailMovieViewModel viewModel;
 
-    private DetailMovieAdapter movieAdapter;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,8 +40,6 @@ public class DetailMovieActivity extends AppCompatActivity {
         }
 
         viewModel = obtainViewModel(this);
-
-        movieAdapter = new DetailMovieAdapter();
 
         progressBar = findViewById(R.id.progress_bar);
         textTitle = findViewById(R.id.title_received);
@@ -58,10 +53,6 @@ public class DetailMovieActivity extends AppCompatActivity {
             if (movieId != null) {
                 progressBar.setVisibility(View.VISIBLE);
                 viewModel.setCourseId(movieId);
-                List<MovieEntity> movieEntityList = viewModel.getModules();
-                movieAdapter.setModules(movieEntityList);
-
-
             }
 
         }
@@ -73,7 +64,7 @@ public class DetailMovieActivity extends AppCompatActivity {
         });
     }
 
-    private void populateCourse(Movie movie) {
+    private void populateCourse(MovieEntity movie) {
         textTitle.setText(movie.getTitle());
         textDesc.setText(movie.getDescription());
 

@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 
 import com.dicoding.picodiploma.themoviedb.data.source.CatalogueRepository;
-import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.Movie;
+import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.MovieEntity;
 import com.dicoding.picodiploma.themoviedb.utils.FakeDataDummy;
 
 import org.junit.After;
@@ -20,7 +20,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-public class MovieViewModelTest {
+public class MovieEntityViewModelTest {
 
     @Rule
     public InstantTaskExecutorRule instantTaskExecutorRule = new InstantTaskExecutorRule();
@@ -39,12 +39,12 @@ public class MovieViewModelTest {
 
     @Test
     public void getCourse() {
-        MutableLiveData<List<Movie>> dummyMovie = new MutableLiveData<>();
+        MutableLiveData<List<MovieEntity>> dummyMovie = new MutableLiveData<>();
         dummyMovie.setValue(FakeDataDummy.generateDummyMovies());
 
         when(catalogueRepository.getAllMovies()).thenReturn(dummyMovie);
 
-        Observer<List<Movie>> observer = Mockito.mock(Observer.class);
+        Observer<List<MovieEntity>> observer = Mockito.mock(Observer.class);
 
         viewModel.getCourse().observeForever(observer);
 

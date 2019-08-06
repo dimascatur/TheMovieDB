@@ -4,8 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.dicoding.picodiploma.themoviedb.data.source.CatalogueRepository;
-import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.TvShow;
-import com.dicoding.picodiploma.themoviedb.utils.DataDummy;
+import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.TvShowEntity;
 
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class TvShowViewModel extends ViewModel {
         this.catalogueRepository = mCatalogueRepository;
     }
 
-    LiveData<List<TvShow>> getTvShow() {
+    LiveData<List<TvShowEntity>> getTvShow() {
         return catalogueRepository.getAllTvShow();
     }
 }

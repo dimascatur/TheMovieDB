@@ -1,27 +1,26 @@
 package com.dicoding.picodiploma.themoviedb.data.source.local.entity.model;
 
-public class TvShow {
-    private String tvShowId;
+public class MovieEntity {
+    private String movieId;
     private String title;
     private String description;
     private String release;
     private String photo;
 
-
-    public TvShow(String tvShowId, String title, String description, String release, String photo) {
-        this.tvShowId = tvShowId;
+    public MovieEntity(String movieId, String title, String description, String release, String photo) {
+        this.movieId = movieId;
         this.title = title;
         this.description = description;
         this.release = release;
         this.photo = photo;
     }
 
-    public String getTvShowId() {
-        return tvShowId;
+    public String getMovieId() {
+        return movieId;
     }
 
-    public void setTvShowId(String tvShowId) {
-        this.tvShowId = tvShowId;
+    public void setMovieId(String movieId) {
+        this.movieId = movieId;
     }
 
     public String getTitle() {

@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.request.RequestOptions;
 import com.dicoding.picodiploma.themoviedb.R;
-import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.Movie;
+import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.MovieEntity;
 import com.dicoding.picodiploma.themoviedb.ui.detail.movie.DetailMovieActivity;
 import com.dicoding.picodiploma.themoviedb.utils.GlideApp;
 
@@ -22,18 +22,18 @@ import java.util.List;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
     private final Activity activity;
-    private List<Movie> mData = new ArrayList<>();
+    private List<MovieEntity> mData = new ArrayList<>();
 
     public MovieAdapter(Activity activity) {
         this.activity = activity;
 
     }
 
-    private List<Movie> getListData() {
+    private List<MovieEntity> getListData() {
         return mData;
     }
 
-    void setData(List<Movie> movies) {
+    void setData(List<MovieEntity> movies) {
         if (movies == null)  return;
         this.mData.clear();
         this.mData.addAll(movies);

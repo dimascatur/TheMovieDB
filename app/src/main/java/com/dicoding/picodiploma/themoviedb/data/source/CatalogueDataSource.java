@@ -2,20 +2,20 @@ package com.dicoding.picodiploma.themoviedb.data.source;
 
 import androidx.lifecycle.LiveData;
 
-import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.Movie;
-import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.TvShow;
+import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.MovieEntity;
+import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.TvShowEntity;
 
 import java.util.List;
 
 public interface CatalogueDataSource {
 
-    LiveData<List<Movie>> getAllMovies();
+    LiveData<List<MovieEntity>> getAllMovies();
 
-    LiveData<Movie> getCourseWithMovie(String movieId);
+    LiveData<MovieEntity> getMovieById(String movieId);
 
-    LiveData<List<TvShow>> getAllTvShow();
+    LiveData<List<TvShowEntity>> getAllTvShow();
 
-    LiveData<TvShow> getCourseWithTvShow(String tvShowId);
+    LiveData<TvShowEntity> getTvShowById(String tvShowId);
 
 
 }

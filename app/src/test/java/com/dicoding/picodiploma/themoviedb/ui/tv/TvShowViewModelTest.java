@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 
 import com.dicoding.picodiploma.themoviedb.data.source.CatalogueRepository;
-import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.TvShow;
+import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.TvShowEntity;
 import com.dicoding.picodiploma.themoviedb.utils.FakeDataDummy;
 
 import org.junit.After;
@@ -16,7 +16,6 @@ import org.mockito.Mockito;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -40,12 +39,12 @@ public class TvShowViewModelTest {
 
     @Test
     public void getTvShow() {
-        MutableLiveData<List<TvShow>> dummyTvShow = new MutableLiveData<>();
+        MutableLiveData<List<TvShowEntity>> dummyTvShow = new MutableLiveData<>();
         dummyTvShow.setValue(FakeDataDummy.generateDummyTvShows());
 
         when(catalogueRepository.getAllTvShow()).thenReturn(dummyTvShow);
 
-        Observer<List<TvShow>> observer = Mockito.mock(Observer.class);
+        Observer<List<TvShowEntity>> observer = Mockito.mock(Observer.class);
 
         viewModel.getTvShow().observeForever(observer);
 

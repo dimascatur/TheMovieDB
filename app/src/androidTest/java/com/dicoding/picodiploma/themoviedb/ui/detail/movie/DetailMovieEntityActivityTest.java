@@ -8,7 +8,7 @@ import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.rule.ActivityTestRule;
 
 import com.dicoding.picodiploma.themoviedb.R;
-import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.Movie;
+import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.MovieEntity;
 import com.dicoding.picodiploma.themoviedb.utils.EspressoIdlingResource;
 import com.dicoding.picodiploma.themoviedb.utils.FakeDataDummy;
 
@@ -22,9 +22,9 @@ import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
-public class DetailMovieActivityTest {
+public class DetailMovieEntityActivityTest {
 
-    private Movie dummyMovie = FakeDataDummy.generateDummyMovies().get(0);
+    private MovieEntity dummyMovie = FakeDataDummy.generateDummyMovies().get(0);
 
     @Rule
     public ActivityTestRule<DetailMovieActivity> activityRule = new ActivityTestRule<DetailMovieActivity>(DetailMovieActivity.class) {

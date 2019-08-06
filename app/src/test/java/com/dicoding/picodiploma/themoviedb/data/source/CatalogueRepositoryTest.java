@@ -3,8 +3,8 @@ package com.dicoding.picodiploma.themoviedb.data.source;
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
 
 import com.dicoding.picodiploma.themoviedb.data.source.local.LocalRepository;
-import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.Movie;
-import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.TvShow;
+import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.MovieEntity;
+import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.TvShowEntity;
 import com.dicoding.picodiploma.themoviedb.data.source.remote.RemoteRepository;
 import com.dicoding.picodiploma.themoviedb.data.source.remote.response.MovieResponse;
 import com.dicoding.picodiploma.themoviedb.data.source.remote.response.TvShowResponse;
@@ -60,7 +60,7 @@ public class CatalogueRepositoryTest {
             return null;
         }).when(remote).getAllMovies(any(RemoteRepository.LoadMoviesCallback.class));
 
-        List<Movie> result = LiveDataTestUtil.getValue(catalogueRepository.getAllMovies());
+        List<MovieEntity> result = LiveDataTestUtil.getValue(catalogueRepository.getAllMovies());
 
         verify(remote, times(1)).getAllMovies(any(RemoteRepository.LoadMoviesCallback.class));
 
@@ -75,7 +75,7 @@ public class CatalogueRepositoryTest {
             return null;
         }).when(remote).getAllShows(any(RemoteRepository.LoadTvShowsCallback.class));
 
-        List<TvShow> result = LiveDataTestUtil.getValue(catalogueRepository.getAllTvShow());
+        List<TvShowEntity> result = LiveDataTestUtil.getValue(catalogueRepository.getAllTvShow());
 
         verify(remote, times(1)).getAllShows(any(RemoteRepository.LoadTvShowsCallback.class));
 
@@ -90,7 +90,7 @@ public class CatalogueRepositoryTest {
             return null;
         }).when(remote).getAllMovies(any(RemoteRepository.LoadMoviesCallback.class));
 
-        Movie result = LiveDataTestUtil.getValue(catalogueRepository.getCourseWithMovie(movieId));
+        MovieEntity result = LiveDataTestUtil.getValue(catalogueRepository.getCourseWithMovie(movieId));
 
         verify(remote, times(1)).getAllMovies(any(RemoteRepository.LoadMoviesCallback.class));
 
@@ -105,7 +105,7 @@ public class CatalogueRepositoryTest {
             return null;
         }).when(remote).getAllShows(any(RemoteRepository.LoadTvShowsCallback.class));
 
-        TvShow result = LiveDataTestUtil.getValue(catalogueRepository.getCourseWithTvShow(tvShowId));
+        TvShowEntity result = LiveDataTestUtil.getValue(catalogueRepository.getCourseWithTvShow(tvShowId));
 
         verify(remote, times(1)).getAllShows(any(RemoteRepository.LoadTvShowsCallback.class));
 

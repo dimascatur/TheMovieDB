@@ -5,8 +5,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 
 import com.dicoding.picodiploma.themoviedb.data.source.CatalogueRepository;
-import com.dicoding.picodiploma.themoviedb.data.source.local.entity.TvShowEntity;
-import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.TvShow;
+import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.TvShowEntity;
 import com.dicoding.picodiploma.themoviedb.utils.FakeDataDummy;
 
 import org.junit.After;
@@ -27,7 +26,7 @@ public class DetailTvShowViewModelTest {
 
     private DetailTvShowViewModel viewModel;
     private CatalogueRepository catalogueRepository = mock(CatalogueRepository.class);
-    private TvShow dummyTvShow = FakeDataDummy.generateDummyTvShows().get(0);
+    private TvShowEntity dummyTvShow = FakeDataDummy.generateDummyTvShows().get(0);
     private String tvShowId = dummyTvShow.getTvShowId();
 
     @Before
@@ -42,11 +41,11 @@ public class DetailTvShowViewModelTest {
 
     @Test
     public void getTvShows() {
-        MutableLiveData<TvShow> tvShowEntities = new MutableLiveData<>();
+        MutableLiveData<TvShowEntity> tvShowEntities = new MutableLiveData<>();
 
         when(catalogueRepository.getCourseWithTvShow(tvShowId)).thenReturn(tvShowEntities);
 
-        Observer<TvShow> observer = mock(Observer.class);
+        Observer<TvShowEntity> observer = mock(Observer.class);
         viewModel.getTvShows().observeForever(observer);
 
         verify(catalogueRepository).getCourseWithTvShow(tvShowId);

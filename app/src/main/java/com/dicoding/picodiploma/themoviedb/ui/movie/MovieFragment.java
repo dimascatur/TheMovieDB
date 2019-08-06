@@ -16,8 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dicoding.picodiploma.themoviedb.R;
-import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.Movie;
-import com.dicoding.picodiploma.themoviedb.utils.DataDummy;
+import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.MovieEntity;
 import com.dicoding.picodiploma.themoviedb.viewmodel.ViewModelFactory;
 
 import java.util.List;
@@ -32,7 +31,7 @@ public class MovieFragment extends Fragment {
 
     private ProgressBar progressBar;
 
-    private List<Movie> movies;
+    private List<MovieEntity> movies;
 
 
 

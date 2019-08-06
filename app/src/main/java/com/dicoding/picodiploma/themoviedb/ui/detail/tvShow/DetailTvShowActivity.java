@@ -14,8 +14,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.bumptech.glide.request.RequestOptions;
 import com.dicoding.picodiploma.themoviedb.R;
-import com.dicoding.picodiploma.themoviedb.data.source.local.entity.TvShowEntity;
-import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.TvShow;
+import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.TvShowEntity;
 import com.dicoding.picodiploma.themoviedb.utils.GlideApp;
 import com.dicoding.picodiploma.themoviedb.viewmodel.ViewModelFactory;
 
@@ -32,8 +31,6 @@ public class DetailTvShowActivity extends AppCompatActivity {
 
     private DetailTvShowViewModel viewModel;
 
-    private DetailTvShowAdapter adapter;
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,8 +40,6 @@ public class DetailTvShowActivity extends AppCompatActivity {
         }
 
         viewModel = obtainViewModel(this);
-
-        adapter = new DetailTvShowAdapter();
 
         progressBar = findViewById(R.id.progress_bar);
         textTitle = findViewById(R.id.title_received);
@@ -58,8 +53,6 @@ public class DetailTvShowActivity extends AppCompatActivity {
             if (tvShowId != null) {
                 progressBar.setVisibility(View.VISIBLE);
                 viewModel.setCourseId(tvShowId);
-                List<TvShowEntity> tvShowEntityList = viewModel.getModules();
-                adapter.setModules(tvShowEntityList);
             }
 
         }
@@ -71,7 +64,7 @@ public class DetailTvShowActivity extends AppCompatActivity {
         });
     }
 
-    private void populateCourse(TvShow tvShow) {
+    private void populateCourse(TvShowEntity tvShow) {
         textTitle.setText(tvShow.getTitle());
         textDesc.setText(tvShow.getDescription());
 

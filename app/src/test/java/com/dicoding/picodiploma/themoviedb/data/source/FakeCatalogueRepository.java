@@ -5,8 +5,8 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.dicoding.picodiploma.themoviedb.data.source.local.LocalRepository;
-import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.Movie;
-import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.TvShow;
+import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.MovieEntity;
+import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.TvShowEntity;
 import com.dicoding.picodiploma.themoviedb.data.source.remote.RemoteRepository;
 import com.dicoding.picodiploma.themoviedb.data.source.remote.response.MovieResponse;
 import com.dicoding.picodiploma.themoviedb.data.source.remote.response.TvShowResponse;
@@ -37,16 +37,16 @@ public class FakeCatalogueRepository implements CatalogueDataSource {
     }
 
     @Override
-    public LiveData<List<Movie>> getAllMovies() {
-        MutableLiveData<List<Movie>> movieResult = new MutableLiveData<>();
+    public LiveData<List<MovieEntity>> getAllMovies() {
+        MutableLiveData<List<MovieEntity>> movieResult = new MutableLiveData<>();
 
         remoteRepository.getAllMovies(new RemoteRepository.LoadMoviesCallback() {
             @Override
             public void onAllMoviesReceived(List<MovieResponse> movieResponses) {
-                ArrayList<Movie> movieList = new ArrayList<>();
+                ArrayList<MovieEntity> movieList = new ArrayList<>();
                 for (int i = 0; i < movieResponses.size(); i++) {
                     MovieResponse response = movieResponses.get(i);
-                    Movie movie = new Movie(response.getId(),
+                    MovieEntity movie = new MovieEntity(response.getId(),
                             response.getTitle(),
                             response.getDescription(),
                             response.getRelease(),
@@ -67,8 +67,8 @@ public class FakeCatalogueRepository implements CatalogueDataSource {
     }
 
     @Override
-    public LiveData<Movie> getCourseWithMovie(final String movieId) {
-        MutableLiveData<Movie> movieResult = new MutableLiveData<>();
+    public LiveData<MovieEntity> getCourseWithMovie(final String movieId) {
+        MutableLiveData<MovieEntity> movieResult = new MutableLiveData<>();
 
         remoteRepository.getAllMovies(new RemoteRepository.LoadMoviesCallback() {
             @Override
@@ -76,7 +76,7 @@ public class FakeCatalogueRepository implements CatalogueDataSource {
                 for (int i = 0; i < movieResponses.size(); i++) {
                     MovieResponse response = movieResponses.get(i);
                     if (response.getId().equals(movieId)) {
-                        Movie movie = new Movie(response.getId(),
+                        MovieEntity movie = new MovieEntity(response.getId(),
                                 response.getTitle(),
                                 response.getDescription(),
                                 response.getRelease(),
@@ -97,16 +97,16 @@ public class FakeCatalogueRepository implements CatalogueDataSource {
     }
 
     @Override
-    public LiveData<List<TvShow>> getAllTvShow() {
-        MutableLiveData<List<TvShow>> tvShowResult = new MutableLiveData<>();
+    public LiveData<List<TvShowEntity>> getAllTvShow() {
+        MutableLiveData<List<TvShowEntity>> tvShowResult = new MutableLiveData<>();
 
         remoteRepository.getAllShows(new RemoteRepository.LoadTvShowsCallback() {
             @Override
             public void onAllTvShowsReceived(List<TvShowResponse> tvShowResponses) {
-                ArrayList<TvShow> tvShowList = new ArrayList<>();
+                ArrayList<TvShowEntity> tvShowList = new ArrayList<>();
                 for (int i = 0; i < tvShowResponses.size(); i++) {
                     TvShowResponse response = tvShowResponses.get(i);
-                    TvShow tvShow = new TvShow(response.getTvId(),
+                    TvShowEntity tvShow = new TvShowEntity(response.getTvId(),
                             response.getTitle(),
                             response.getDescription(),
                             response.getRelease(),
@@ -128,8 +128,8 @@ public class FakeCatalogueRepository implements CatalogueDataSource {
 
 
     @Override
-    public LiveData<TvShow> getCourseWithTvShow(final String tvShowId) {
-        MutableLiveData<TvShow> tvShowResult = new MutableLiveData<>();
+    public LiveData<TvShowEntity> getCourseWithTvShow(final String tvShowId) {
+        MutableLiveData<TvShowEntity> tvShowResult = new MutableLiveData<>();
 
         remoteRepository.getAllShows(new RemoteRepository.LoadTvShowsCallback() {
             @Override
@@ -137,7 +137,7 @@ public class FakeCatalogueRepository implements CatalogueDataSource {
                 for (int i = 0; i < tvShowResponses.size(); i++) {
                     TvShowResponse response = tvShowResponses.get(i);
                     if (response.getTvId().equals(tvShowId)) {
-                        TvShow tvShow = new TvShow(response.getTvId(),
+                        TvShowEntity tvShow = new TvShowEntity(response.getTvId(),
                                 response.getTitle(),
                                 response.getDescription(),
                                 response.getRelease(),

@@ -8,7 +8,7 @@ import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.rule.ActivityTestRule;
 
 import com.dicoding.picodiploma.themoviedb.R;
-import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.TvShow;
+import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.TvShowEntity;
 import com.dicoding.picodiploma.themoviedb.utils.EspressoIdlingResource;
 import com.dicoding.picodiploma.themoviedb.utils.FakeDataDummy;
 
@@ -24,7 +24,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 public class DetailTvShowActivityTest {
 
-    private TvShow dummyTvShow = FakeDataDummy.generateDummyTvShows().get(0);
+    private TvShowEntity dummyTvShow = FakeDataDummy.generateDummyTvShows().get(0);
 
     @Rule
     public ActivityTestRule<DetailTvShowActivity> activityRule = new ActivityTestRule<DetailTvShowActivity>(DetailTvShowActivity.class) {

@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.request.RequestOptions;
 import com.dicoding.picodiploma.themoviedb.R;
-import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.TvShow;
+import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.TvShowEntity;
 import com.dicoding.picodiploma.themoviedb.ui.detail.tvShow.DetailTvShowActivity;
 import com.dicoding.picodiploma.themoviedb.utils.GlideApp;
 
@@ -22,17 +22,17 @@ import java.util.List;
 
 public class TvShowAdapter extends RecyclerView.Adapter<TvShowAdapter.TvShowViewHolder> {
     private final Activity activity;
-    private List<TvShow> data = new ArrayList<>();
+    private List<TvShowEntity> data = new ArrayList<>();
 
     public TvShowAdapter(Activity activity) {
         this.activity = activity;
     }
 
-    private List<TvShow> getListData() {
+    private List<TvShowEntity> getListData() {
         return data;
     }
 
-    void setData(List<TvShow>tvShows) {
+    void setData(List<TvShowEntity>tvShows) {
         if (tvShows == null) return;
         this.data.clear();
         this.data.addAll(tvShows);

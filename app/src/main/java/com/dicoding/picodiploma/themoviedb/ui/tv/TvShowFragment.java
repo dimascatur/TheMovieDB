@@ -17,8 +17,7 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import com.dicoding.picodiploma.themoviedb.R;
-import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.TvShow;
-import com.dicoding.picodiploma.themoviedb.utils.DataDummy;
+import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.TvShowEntity;
 import com.dicoding.picodiploma.themoviedb.viewmodel.ViewModelFactory;
 
 import java.util.List;
@@ -32,7 +31,7 @@ public class TvShowFragment extends Fragment {
     private TvShowAdapter adapter;
     private ProgressBar progressBar;
 
-    private List<TvShow> tvShows;
+    private List<TvShowEntity> tvShows;
 
 
     public TvShowFragment() {
