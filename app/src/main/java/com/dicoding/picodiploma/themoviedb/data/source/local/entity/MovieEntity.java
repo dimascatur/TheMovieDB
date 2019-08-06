@@ -1,34 +1,10 @@
 package com.dicoding.picodiploma.themoviedb.data.source.local.entity;
 
-import androidx.annotation.NonNull;
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.ForeignKey;
-import androidx.room.Index;
-
-import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.Movie;
-
-@Entity(tableName = "MovieEntity")
 public class MovieEntity {
-
-    // todo ubah sesuai MOVIE.class
-    @NonNull
-    @ColumnInfo(name = "moduleId")
     private String mModuleId;
-
-    @NonNull
-    @ColumnInfo(name = "courseId")
     private String mCourseId;
-
-    @NonNull
-    @ColumnInfo(name = "title")
     private String mTitle;
-
-    @NonNull
-    @ColumnInfo(name = "position")
     private Integer mPosition;
-
-    @ColumnInfo(name = "read")
     private boolean mRead = false;
 
     public MovieEntity(String moduleId, String courseId, String title, Integer position, Boolean read) {

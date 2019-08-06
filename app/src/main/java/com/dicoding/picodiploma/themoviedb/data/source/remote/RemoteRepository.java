@@ -2,10 +2,6 @@ package com.dicoding.picodiploma.themoviedb.data.source.remote;
 
 import android.os.Handler;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-
-import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.Movie;
 import com.dicoding.picodiploma.themoviedb.data.source.remote.response.MovieResponse;
 import com.dicoding.picodiploma.themoviedb.data.source.remote.response.TvShowResponse;
 import com.dicoding.picodiploma.themoviedb.utils.EspressoIdlingResource;
@@ -30,13 +26,14 @@ public class RemoteRepository {
         return INSTANCE;
     }
 
-    public void getAllMovies(LoadMoviesCallback  callback) {
+    public void getAllMovies(LoadMoviesCallback callback) {
         EspressoIdlingResource.increment();
         Handler handler = new Handler();
         handler.postDelayed(() -> {
             callback.onAllMoviesReceived(jsonHelper.loadMovies());
             EspressoIdlingResource.decrement();
         }, SERVICE_LATENCY_IN_MILLIS);
+
     }
 
     public void getAllShows(LoadTvShowsCallback callback) {

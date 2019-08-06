@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.dicoding.picodiploma.themoviedb.R;
 import com.dicoding.picodiploma.themoviedb.data.source.local.entity.MovieEntity;
-import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.Movie;
 
 import java.util.ArrayList;
 import java.util.List;

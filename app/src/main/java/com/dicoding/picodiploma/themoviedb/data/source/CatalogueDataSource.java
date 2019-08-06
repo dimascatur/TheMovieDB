@@ -17,7 +17,5 @@ public interface CatalogueDataSource {
 
     LiveData<TvShow> getCourseWithTvShow(String tvShowId);
 
-    // todo tambahkan metode ini getBookmarkMovie, getBookmarkTvShow, getBookmarkMovieById, getBookmarkTvShowById, insertBookmarkMovie, insertBookmarkTvShow, deleteBookmarkTvShow, deleteBookmarkMovie
-
 
 }
