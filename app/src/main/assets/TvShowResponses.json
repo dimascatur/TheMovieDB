@@ -1,0 +1,74 @@
+{
+  "tvShows": [
+    {
+      "tvId": "d15",
+      "title": "See No Evil: The Moors Murders",
+      "description": "The dramatisation of one of the most notorious killing sprees in British history.",
+      "release": "14-05-2019",
+      "imgPhoto": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/b71BaRjp9TwxUZodLGgSRIlkfL8.jpg"
+    },
+    {
+      "tvId": "d16",
+      "title": "One-Punch Man",
+      "description": "Saitama is a hero who only became a hero for fun. After three years of “special” training, though, he's become so strong that he's practically invincible. In fact, he's too strong—even his mightiest opponents are taken out with a single punch, and it turns out that being devastatingly powerful is actually kind of a bore. With his passion for being a hero lost along with his hair, yet still faced with new enemies every day, how much longer can he keep it going?",
+      "release": "04-10-2-19",
+      "imgPhoto": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/iE3s0lG5QVdEHOEZnoAxjmMtvne.jpg"
+    },
+    {
+      "tvId": "d19",
+      "title": "Stranger Things",
+      "description": "When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces, and one strange little girl.",
+      "release": "15-07-2019",
+      "imgPhoto": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/x2LSRK2Cm7MZhjluni1msVJ3wDF.jpg"
+    },
+    {
+      "tvId": "d17",
+      "title": "Arrow",
+      "description": "Spoiled billionaire playboy Oliver Queen is missing and presumed dead when his yacht is lost at sea. He returns five years later a changed man, determined to clean up the city as a hooded vigilante armed with a bow.",
+      "release": "10-10-2012",
+      "imgPhoto": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/mo0FP1GxOFZT4UDde7RFDz5APXF.jpg"
+    },
+    {
+      "tvId": "d18",
+      "title": "Game of Thrones",
+      "description": "Seven noble families fight for control of the mythical land of Westeros. Friction between the houses leads to full-scale war. All while a very ancient evil awakens in the farthest north. Amidst the war, a neglected military order of misfits, the Night's Watch, is all that stands between the realms of men and icy horrors beyond.",
+      "release": "14-04-2019",
+      "imgPhoto": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/u3bZgnGQ9T01sWNhyveQz0wH0Hl.jpg"
+    },
+    {
+      "tvId": "d19",
+      "title": "Supergirl",
+      "description": "Twenty-four-year-old Kara Zor-El, who was taken in by the Danvers family when she was 13 after being sent away from Krypton, must learn to embrace her powers after previously hiding them. The Danvers teach her to be careful with her powers, until she has to reveal them during an unexpected disaster, setting her on her journey of heroism.",
+      "release": "26-09-2015",
+      "imgPhoto": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/vqBsgL9nd2v04ZvCqPzwtckDdFD.jpg"
+    },
+    {
+      "tvId": "e14",
+      "title": "Prison Break",
+      "description": "Due to a political conspiracy, an innocent man is sent to death row and his only hope is his brother, who makes it his mission to deliberately get himself sent to the same prison in order to break the both of them out, from the inside out.",
+      "release": "29-07-2005",
+      "imgPhoto": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/oMFtDk8hgX9UM4dVEOJt8mcFmHC.jpg"
+    },
+    {
+      "tvId": "e15",
+      "title": "The 100",
+      "description": "100 years in the future, when the Earth has been abandoned due to radioactivity, the last surviving humans live on an ark orbiting the planet — but the ark won't last forever. So the repressive regime picks 100 expendable juvenile delinquents to send down to Earth to see if the planet is still habitable.",
+      "release": "19-04-2014",
+      "imgPhoto": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/wBzNjurA8ijJPF21Ggs9nbviIzi.jpg"
+    },
+    {
+      "tvId": "e16",
+      "title": "Suits",
+      "description": "While running from a drug deal gone bad, Mike Ross, a brilliant young college-dropout, slips into a job interview with one of New York City's best legal closers, Harvey Specter. Tired of cookie-cutter law school grads, Harvey takes a gamble by hiring Mike on the spot after he recognizes his raw talent and photographic memory.",
+      "release": "23-06-2011",
+      "imgPhoto": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/dE5s2yagw4CNOSznMwn0LMBmPbx.jpg"
+    },
+    {
+      "tvId": "e17",
+      "title": "Isekai Cheat Magician",
+      "description": "As regular high school students Taichi and Rin disappeared in a beam of light. When they came to, the two of them were already in a world of swords and magic. Finally getting away after experiencing an attack by monsters, following the suggestion of adventurers they headed on the path towards the guild. In the guild, the two of them found out that they possessed unbelievably powerful magic. Thus the regular high school students transformed into the strongest cheats.",
+      "release": "10-07-2019",
+      "imgPhoto": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/vtAJAku94Fm3OVsHx9w04XhsTk3.jpg"
+    }
+  ]
+}

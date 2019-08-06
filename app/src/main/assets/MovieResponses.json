@@ -1,0 +1,74 @@
+{
+  "movies": [
+    {
+      "id": "a14",
+      "title": "Spider Man Far From Home",
+      "description": "Peter Parker and his friends go on a summer trip to Europe. However, they will hardly be able to rest - Peter will have to agree to help Nick Fury uncover the mystery of creatures that cause natural disasters and destruction throughout the continent.",
+      "release": "02-07-2019",
+      "imgPhoto": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/q1ZcgXatgXo58tUO3vEsrJhYSbu.jpg"
+    },
+    {
+      "id": "a15",
+      "title": "Toy Story 4",
+      "description": "Woody has always been confident about his place in the world and that his priority is taking care of his kid, whether that's Andy or Bonnie. But when Bonnie adds a reluctant new toy called \"Forky\" to her room, a road trip adventure alongside old and new friends will show Woody how big the world can be for a toy.",
+      "release": "19-06-2019",
+      "imgPhoto": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/w9kR8qbmQ01HwnvK4alvnQ2ca0L.jpg"
+    },
+    {
+      "id": "b13",
+      "title": "Alita:Battle Angle",
+      "description": "When Alita awakens with no memory of who she is in a future world she does not recognize, she is taken in by Ido, a compassionate doctor who realizes that somewhere in this abandoned cyborg shell is the heart and soul of a young woman with an extraordinary past.",
+      "release": "14-02-2019",
+      "imgPhoto": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/xRWht48C2V8XNfzvPehyClOvDni.jpg"
+    },
+    {
+      "id": "C15",
+      "title": "JHON WICK:Chapter 3-Parrabellum",
+      "description": "Super-assassin John Wick returns with a $14 million price tag on his head and an army of bounty-hunting killers on his trail. After killing a member of the shadowy international assassin’s guild, the High Table, John Wick is excommunicado, but the world’s most ruthless hit men and women await his every turn.",
+      "release": "17-05-2019",
+      "imgPhoto": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/ziEuG1essDuWuC5lpWUaw1uXY2O.jpg"
+    },
+    {
+      "id": "b14",
+      "title": "Lion King",
+      "description": "Simba idolises his father, King Mufasa, and takes to heart his own royal destiny. But not everyone in the kingdom celebrates the new cub's arrival. Scar, Mufasa's brother—and former heir to the throne—has plans of his own. The battle for Pride Rock is ravaged with betrayal, tragedy and drama, ultimately resulting in Simba's exile. With help from a curious pair of newfound friends, Simba will have to figure out how to grow up and take back what is rightfully his.",
+      "release": "19-07-2019",
+      "imgPhoto": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/no2HvBMyXp9hf1L3yNNKwnk0XFE.jpg"
+    },
+    {
+      "id": "b15",
+      "title": "Captain Marvel",
+      "description": "The story follows Carol Danvers as she becomes one of the universe's most powerful heroes when Earth is caught in the middle of a galactic war between two alien races. Set in the 1990s, Captain Marvel is an all-new adventure from a previously unseen period in the history of the Marvel Cinematic Universe.",
+      "release": "08-02-2019",
+      "imgPhoto": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/zSOuQ1u8tjUCPhTC9Aujd2ICkdR.jpg"
+    },
+    {
+      "id": "b16",
+      "title": "Aladdin",
+      "description": "A kindhearted street urchin named Aladdin embarks on a magical adventure after finding a lamp that releases a wisecracking genie while a power-hungry Grand Vizier vies for the same lamp that has the power to make their deepest wishes come true.",
+      "release": "24-05-2019",
+      "imgPhoto": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/3iYQTLGoy7QnjcUYRJy4YrAgGvp.jpg"
+    },
+    {
+      "id": "b17",
+      "title": "HellBoy",
+      "description": "HellBoy comes to England, where he must defeat Nimue, Merlin's consort and the Blood Queen. But their battle will bring about the end of the world, a fate he desperately tries to turn away.",
+      "release": "12-04-2019",
+      "imgPhoto": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/bk8LyaMqUtaQ9hUShuvFznQYQKR.jpg"
+    },
+    {
+      "id": "b18",
+      "title": "Avengers:Endgame",
+      "description": "After the devastating events of Avengers: Infinity War, the universe is in ruins due to the efforts of the Mad Titan, Thanos. With the help of remaining allies, the Avengers must assemble once more in order to undo Thanos' actions and restore order to the universe once and for all, no matter what consequences may be in store.",
+      "release": "26-04-2019",
+      "imgPhoto": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/or06FN3Dka5tukK1e9sl16pB3iy.jpg"
+    },
+    {
+      "id": "b19",
+      "title": "Avengers:Infinity War",
+      "description": "As the Avengers and their allies have continued to protect the world from threats too large for any one hero to handle, a new danger has emerged from the cosmic shadows: Thanos. A despot of intergalactic infamy, his goal is to collect all six Infinity Stones, artifacts of unimaginable power, and use them to inflict his twisted will on all of reality. Everything the Avengers have fought for has led up to this moment - the fate of Earth and existence itself has never been more uncertain.",
+      "release": "27-04-2018",
+      "imgPhoto": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg"
+    }
+  ]
+}

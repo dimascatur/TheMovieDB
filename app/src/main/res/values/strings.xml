@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">TheMovieDB</string>
+    <string name="title_movie">Movie</string>
+    <string name="title_tvShow">TvShow</string>
+    <string name="movie">Movie</string>
+    <string name="tvShow">TvShow</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="description">Loading. . .</string>
+    <string name="tv_show_name">TvShow Name</string>
+    <string name="movies_name">Movies Name</string>
+    <string name="release_date">Release Date</string>
+    <string name="item_photo">this is item photo</string>
+    <string name="release_title">This is dummy for release date</string>
+    <string name="detail_photo">This is detail photo</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="example">Example</string>
+    <string name="overview">Overview</string>
+    <string name="background_photo">This is background photo</string>
+</resources>
