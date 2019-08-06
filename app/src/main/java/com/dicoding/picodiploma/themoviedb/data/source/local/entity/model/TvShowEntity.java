@@ -1,6 +1,9 @@
 package com.dicoding.picodiploma.themoviedb.data.source.local.entity.model;
 
+// TODO buat di sini @Entity
 public class TvShowEntity {
+
+    // TODO Primary Key nya adalah si MovieId kelimanya gak boleh / NonNull
     private String tvShowId;
     private String title;
     private String description;
@@ -56,3 +59,8 @@ public class TvShowEntity {
         this.photo = photo;
     }
 }
+
+
+// TODO buat kelas DAO -> getAll..., get...ById(String id...), insert...(...), delete...(...)
+// TODO liat di sini (https://www.dicoding.com/academies/129/tutorials/4479?from=4469)
+// TODO Query nya ("Select * from ... where id = inputId")

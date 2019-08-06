@@ -43,18 +43,11 @@ public class DetailTvShowViewModelTest {
     public void getTvShows() {
         MutableLiveData<TvShowEntity> tvShowEntities = new MutableLiveData<>();
 
-        when(catalogueRepository.getCourseWithTvShow(tvShowId)).thenReturn(tvShowEntities);
+        when(catalogueRepository.getTvShowById(tvShowId)).thenReturn(tvShowEntities);
 
         Observer<TvShowEntity> observer = mock(Observer.class);
         viewModel.getTvShows().observeForever(observer);
 
-        verify(catalogueRepository).getCourseWithTvShow(tvShowId);
-    }
-
-    @Test
-    public void getModules() {
-        List<TvShowEntity> tvShowEntityList = viewModel.getModules();
-        assertNotNull(tvShowEntityList);
-        assertEquals(10, tvShowEntityList.size());
+        verify(catalogueRepository).getTvShowById(tvShowId);
     }
 }

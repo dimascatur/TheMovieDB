@@ -1,6 +1,9 @@
 package com.dicoding.picodiploma.themoviedb.data.source.local.entity.model;
 
+// TODO buat di sini @Entity
 public class MovieEntity {
+
+    // TODO Primary Key nya adalah si MovieId kelimanya gak boleh / NonNull
     private String movieId;
     private String title;
     private String description;

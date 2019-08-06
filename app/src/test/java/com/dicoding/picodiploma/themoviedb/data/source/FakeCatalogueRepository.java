@@ -67,7 +67,7 @@ public class FakeCatalogueRepository implements CatalogueDataSource {
     }
 
     @Override
-    public LiveData<MovieEntity> getCourseWithMovie(final String movieId) {
+    public LiveData<MovieEntity> getMovieById(final String movieId) {
         MutableLiveData<MovieEntity> movieResult = new MutableLiveData<>();
 
         remoteRepository.getAllMovies(new RemoteRepository.LoadMoviesCallback() {
@@ -128,7 +128,7 @@ public class FakeCatalogueRepository implements CatalogueDataSource {
 
 
     @Override
-    public LiveData<TvShowEntity> getCourseWithTvShow(final String tvShowId) {
+    public LiveData<TvShowEntity> getTvShowById(final String tvShowId) {
         MutableLiveData<TvShowEntity> tvShowResult = new MutableLiveData<>();
 
         remoteRepository.getAllShows(new RemoteRepository.LoadTvShowsCallback() {
@@ -152,6 +152,6 @@ public class FakeCatalogueRepository implements CatalogueDataSource {
 
             }
         });
-     return tvShowResult;
+        return tvShowResult;
     }
 }

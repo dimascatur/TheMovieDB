@@ -83,14 +83,14 @@ public class CatalogueRepositoryTest {
     }
 
     @Test
-    public void getCourseWithMovies() {
+    public void getMovieById() {
         doAnswer(invocation -> {
             ((RemoteRepository.LoadMoviesCallback) invocation.getArguments()[0])
                     .onAllMoviesReceived(movieResponses);
             return null;
         }).when(remote).getAllMovies(any(RemoteRepository.LoadMoviesCallback.class));
 
-        MovieEntity result = LiveDataTestUtil.getValue(catalogueRepository.getCourseWithMovie(movieId));
+        MovieEntity result = LiveDataTestUtil.getValue(catalogueRepository.getMovieById(movieId));
 
         verify(remote, times(1)).getAllMovies(any(RemoteRepository.LoadMoviesCallback.class));
 
@@ -98,14 +98,14 @@ public class CatalogueRepositoryTest {
     }
 
     @Test
-    public void getCourseWithTvShow() {
+    public void getTvShowById() {
         doAnswer(invocation -> {
             ((RemoteRepository.LoadTvShowsCallback) invocation.getArguments()[0])
                     .onAllTvShowsReceived(tvShowResponses);
             return null;
         }).when(remote).getAllShows(any(RemoteRepository.LoadTvShowsCallback.class));
 
-        TvShowEntity result = LiveDataTestUtil.getValue(catalogueRepository.getCourseWithTvShow(tvShowId));
+        TvShowEntity result = LiveDataTestUtil.getValue(catalogueRepository.getTvShowById(tvShowId));
 
         verify(remote, times(1)).getAllShows(any(RemoteRepository.LoadTvShowsCallback.class));
 

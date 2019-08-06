@@ -44,18 +44,11 @@ public class DetailMovieEntityViewModelTest {
     public void getMovies() {
         MutableLiveData<MovieEntity> movieEntities = new MutableLiveData<>();
 
-        when(catalogueRepository.getCourseWithMovie(movieId)).thenReturn(movieEntities);
+        when(catalogueRepository.getMovieById(movieId)).thenReturn(movieEntities);
 
         Observer<MovieEntity> observer = mock(Observer.class);
         viewModel.getMovies().observeForever(observer);
 
-        verify(catalogueRepository).getCourseWithMovie(movieId);
-    }
-
-    @Test
-    public void getModules() {
-        List<MovieEntity> movieEntities = viewModel.getModules();
-        assertNotNull(movieEntities);
-        assertEquals(10, movieEntities.size());
+        verify(catalogueRepository).getMovieById(movieId);
     }
 }
