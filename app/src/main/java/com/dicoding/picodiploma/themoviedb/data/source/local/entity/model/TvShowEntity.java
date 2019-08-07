@@ -1,13 +1,34 @@
 package com.dicoding.picodiploma.themoviedb.data.source.local.entity.model;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 // TODO buat di sini @Entity
+@Entity(tableName = "tvShowEntity")
 public class TvShowEntity {
 
     // TODO Primary Key nya adalah si MovieId kelimanya gak boleh / NonNull
+    @PrimaryKey
+    @NonNull
+    @ColumnInfo(name = "tvShowId")
     private String tvShowId;
+
+    @NonNull
+    @ColumnInfo(name = "title")
     private String title;
+
+    @NonNull
+    @ColumnInfo(name = "description")
     private String description;
+
+    @NonNull
+    @ColumnInfo(name = "release")
     private String release;
+
+    @NonNull
+    @ColumnInfo(name = "photo")
     private String photo;
 
 
@@ -61,6 +82,6 @@ public class TvShowEntity {
 }
 
 
-// TODO buat kelas DAO -> getAll..., get...ById(String id...), insert...(...), delete...(...)
+// TODO buat kelas DAO -> getAll..., get...ById(String id...), insertMovie...(...), deleteMovie...(...)
 // TODO liat di sini (https://www.dicoding.com/academies/129/tutorials/4479?from=4469)
 // TODO Query nya ("Select * from ... where id = inputId")
