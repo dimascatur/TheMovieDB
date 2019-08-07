@@ -1,6 +1,7 @@
 package com.dicoding.picodiploma.themoviedb.ui.detail.tvShow;
 
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.bumptech.glide.request.RequestOptions;
@@ -30,6 +32,8 @@ public class DetailTvShowActivity extends AppCompatActivity {
     private ProgressBar progressBar;
 
     private DetailTvShowViewModel viewModel;
+    private Menu menu;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -62,6 +66,16 @@ public class DetailTvShowActivity extends AppCompatActivity {
                 progressBar.setVisibility(View.GONE);
             }
         });
+    }
+
+    private void setBookmarkState(boolean state) {
+        if (menu == null) return;
+        MenuItem menuItem = menu.findItem(R.id.action_bookmark);
+        if (state) {
+            menuItem.setIcon(ContextCompat.getDrawable(this, R.drawable.ic_favorite_black_24dp));
+        } else {
+            menuItem.setIcon(ContextCompat.getDrawable(this, R.drawable.ic_favorite_border_black_24dp));
+        }
     }
 
     private void populateCourse(TvShowEntity tvShow) {
