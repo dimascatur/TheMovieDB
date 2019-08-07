@@ -10,6 +10,10 @@ import com.dicoding.picodiploma.themoviedb.data.source.CatalogueRepository;
 import com.dicoding.picodiploma.themoviedb.di.Injection;
 import com.dicoding.picodiploma.themoviedb.ui.detail.movie.DetailMovieViewModel;
 import com.dicoding.picodiploma.themoviedb.ui.detail.tvShow.DetailTvShowViewModel;
+import com.dicoding.picodiploma.themoviedb.ui.favorite.movie.FavoriteMovieFragment;
+import com.dicoding.picodiploma.themoviedb.ui.favorite.movie.FavoriteMovieViewModel;
+import com.dicoding.picodiploma.themoviedb.ui.favorite.tvShow.FavoriteTvShowFragment;
+import com.dicoding.picodiploma.themoviedb.ui.favorite.tvShow.FavoriteTvShowViewModel;
 import com.dicoding.picodiploma.themoviedb.ui.movie.MovieViewModel;
 import com.dicoding.picodiploma.themoviedb.ui.tv.TvShowViewModel;
 
@@ -48,6 +52,12 @@ public class ViewModelFactory extends ViewModelProvider.NewInstanceFactory {
         } else if (modelClass.isAssignableFrom(DetailTvShowViewModel.class)) {
             //noinspection unchecked
             return (T) new DetailTvShowViewModel(mCatalogueRepository);
+        } else if (modelClass.isAssignableFrom(FavoriteMovieViewModel.class)) {
+            //noinspection unchecked
+            return (T) new FavoriteMovieViewModel(mCatalogueRepository);
+        } else if (modelClass.isAssignableFrom(FavoriteTvShowViewModel.class)) {
+            //noinspection unchecked
+            return (T) new FavoriteTvShowViewModel(mCatalogueRepository);
         }
 
         throw new IllegalArgumentException("Unknown ViewModel class: " + modelClass.getName());

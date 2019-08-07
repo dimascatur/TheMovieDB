@@ -5,12 +5,9 @@ import androidx.lifecycle.ViewModel;
 
 import com.dicoding.picodiploma.themoviedb.data.source.CatalogueRepository;
 import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.MovieEntity;
-import com.dicoding.picodiploma.themoviedb.utils.DataDummy;
-
-import java.util.List;
 
 public class DetailMovieViewModel extends ViewModel {
-    private String courseId;
+    private String movieId;
     private CatalogueRepository catalogueRepository;
 
     public DetailMovieViewModel(CatalogueRepository mCatalogueRepository) {
@@ -18,15 +15,27 @@ public class DetailMovieViewModel extends ViewModel {
     }
 
     LiveData<MovieEntity> getMovies() {
-        return catalogueRepository.getMovieById(courseId);
+        return catalogueRepository.getMovieById(movieId);
     }
 
-    void setCourseId(String courseId) {
-        this.courseId = courseId;
+    LiveData<MovieEntity> getBookmarkMovie(){
+        return catalogueRepository.getBookmarkMovieById(movieId);
+    }
+
+    void setCourseId(String movieId) {
+        this.movieId = movieId;
     }
 
     private String getMovieId() {
-        return courseId;
+        return movieId;
+    }
+
+    public void setBookmark(MovieEntity movieEntity) {
+        catalogueRepository.insertMovie(movieEntity);
+    }
+
+    public void setUnBookmark(MovieEntity movieEntity) {
+        catalogueRepository.deleteMovie(movieEntity);
     }
 }
 

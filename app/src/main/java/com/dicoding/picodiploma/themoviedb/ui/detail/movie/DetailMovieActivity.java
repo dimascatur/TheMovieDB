@@ -1,6 +1,7 @@
 package com.dicoding.picodiploma.themoviedb.ui.detail.movie;
 
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.bumptech.glide.request.RequestOptions;
@@ -17,8 +19,6 @@ import com.dicoding.picodiploma.themoviedb.R;
 import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.MovieEntity;
 import com.dicoding.picodiploma.themoviedb.utils.GlideApp;
 import com.dicoding.picodiploma.themoviedb.viewmodel.ViewModelFactory;
-
-import java.util.List;
 
 public class DetailMovieActivity extends AppCompatActivity {
     public static final String EXTRA_MOVIE = "extra_movie";
@@ -28,9 +28,10 @@ public class DetailMovieActivity extends AppCompatActivity {
     private TextView textDesc;
     private ImageView imageView;
     private ImageView imageBg;
-
+    private Menu menu;
     private DetailMovieViewModel viewModel;
-
+    private Boolean state = false;
+    private MovieEntity movieEntity;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,10 +59,55 @@ public class DetailMovieActivity extends AppCompatActivity {
         }
         viewModel.getMovies().observe(this, movie -> {
             if (movie != null) {
+                movieEntity = movie;
                 populateCourse(movie);
                 progressBar.setVisibility(View.GONE);
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_detail, menu);
+        this.menu = menu;
+
+        viewModel.getBookmarkMovie().observe(this, movieEntity -> {
+            if (movieEntity == null) {
+                state = false;
+            } else {
+                state = true;
+            }
+            setBookmarkState(state);
+
+        });
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        } else if (item.getItemId() == R.id.action_bookmark) {
+            if (state) {
+                viewModel.setUnBookmark(movieEntity);
+                state = false;
+            } else {
+                viewModel.setBookmark(movieEntity);
+                state = true;
+            }
+            setBookmarkState(state);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void setBookmarkState(boolean state) {
+        if (menu == null) return;
+        MenuItem menuItem = menu.findItem(R.id.action_bookmark);
+        if (state) {
+            menuItem.setIcon(ContextCompat.getDrawable(this, R.drawable.ic_favorite_black_24dp));
+        } else {
+            menuItem.setIcon(ContextCompat.getDrawable(this, R.drawable.ic_favorite_border_black_24dp));
+        }
     }
 
     private void populateCourse(MovieEntity movie) {
@@ -78,16 +124,6 @@ public class DetailMovieActivity extends AppCompatActivity {
                 .centerCrop()
                 .apply(RequestOptions.placeholderOf(R.drawable.ic_loading).error(R.drawable.ic_error))
                 .into(imageBg);
-
-
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == android.R.id.home) {
-            onBackPressed();
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     @NonNull
