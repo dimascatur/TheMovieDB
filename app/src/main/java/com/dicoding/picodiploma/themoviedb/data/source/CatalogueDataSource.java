@@ -17,5 +17,23 @@ public interface CatalogueDataSource {
 
     LiveData<TvShowEntity> getTvShowById(String tvShowId);
 
+    LiveData<List<MovieEntity>> getAllBookmarkMovies();
+
+    LiveData<MovieEntity> getBookmarkMovieById(String movieId);
+
+    void insertMovie(MovieEntity movieEntity);
+
+    void deleteMovie(MovieEntity movieEntity);
+
+    LiveData<List<TvShowEntity>> getAllBookmarkTvShows();
+
+    LiveData<TvShowEntity> getBookmarkTvShowById(String tvShowId);
+
+    void insertTvShow(TvShowEntity tvShowEntity);
+
+    void deleteTvShow(TvShowEntity tvShowEntity);
+
+
+
 
 }

@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.dicoding.picodiploma.themoviedb.R;
+import com.dicoding.picodiploma.themoviedb.ui.favorite.movie.FavoriteMovieFragment;
+import com.dicoding.picodiploma.themoviedb.ui.favorite.tvShow.FavoriteTvShowFragment;
 import com.dicoding.picodiploma.themoviedb.ui.movie.MovieFragment;
 import com.dicoding.picodiploma.themoviedb.ui.tv.TvShowFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -22,6 +24,10 @@ public class HomeActivity extends AppCompatActivity {
             fragment = MovieFragment.newInstance();
         } else if (item.getItemId() == R.id.action_tvShow) {
             fragment = TvShowFragment.newInstance();
+        } else if (item.getItemId() == R.id.favorite_movie) {
+            fragment = FavoriteMovieFragment.newInstance();
+        } else if (item.getItemId() == R.id.favorite_tv) {
+            fragment = FavoriteTvShowFragment.newInstance();
         }
 
         if (fragment != null) {

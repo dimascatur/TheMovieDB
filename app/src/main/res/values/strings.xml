@@ -19,4 +19,6 @@
     <string name="example">Example</string>
     <string name="overview">Overview</string>
     <string name="background_photo">This is background photo</string>
+    <string name="favorite_movie">Favorite Movie</string>
+    <string name="favorite_tv_show">FavoriteTvShow</string>
 </resources>

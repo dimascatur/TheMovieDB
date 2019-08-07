@@ -18,22 +18,22 @@ public class LocalRepository {
     private CatalogueDao mCatalogueDao;
     private ExecutorService executorService;
 
-    public LocalRepository(Application application) {
+public LocalRepository(Application application) {
         executorService = Executors.newSingleThreadExecutor();
 
         CatalogueDatabase database = CatalogueDatabase.getDatabase(application);
         mCatalogueDao = database.catalogueDao();
     }
 
-    public LiveData<List<MovieEntity>> getAllMovies() {
+    public LiveData<List<MovieEntity>> getAllBookmarkMovies() {
         return mCatalogueDao.getAllMovies();
     }
 
-    public LiveData<MovieEntity> getMovieById(final String movieId) {
+    public LiveData<MovieEntity> getBookmarkMovieById(final String movieId) {
         return mCatalogueDao.getMovieById(movieId);
     }
 
-    public void insertMovies(final MovieEntity movieEntity) {
+    public void insertMovie(final MovieEntity movieEntity) {
         executorService.execute(new Runnable() {
             @Override
             public void run() {
@@ -42,7 +42,7 @@ public class LocalRepository {
         });
     }
 
-    public void deleteMovies(final MovieEntity movieEntity) {
+    public void deleteMovie(final MovieEntity movieEntity) {
         executorService.execute(new Runnable() {
             @Override
             public void run() {
@@ -51,15 +51,15 @@ public class LocalRepository {
         });
     }
 
-    public LiveData<List<TvShowEntity>> getAllTvShows() {
+    public LiveData<List<TvShowEntity>> getAllBookmarkTvShows() {
         return mCatalogueDao.getAllTvShows();
     }
 
-    public LiveData<TvShowEntity> getTvShowById(final String tvShowId) {
+    public LiveData<TvShowEntity> getBookmarkTvShowById(final String tvShowId) {
         return mCatalogueDao.getTvShowById(tvShowId);
     }
 
-    public void insertTvShows(final TvShowEntity tvShowEntity) {
+    public void insertTvShow(final TvShowEntity tvShowEntity) {
         executorService.execute(new Runnable() {
             @Override
             public void run() {
@@ -68,7 +68,7 @@ public class LocalRepository {
         });
     }
 
-    public void deleteTvShows(final TvShowEntity tvShowEntity) {
+    public void deleteTvShow(final TvShowEntity tvShowEntity) {
         executorService.execute(new Runnable() {
             @Override
             public void run() {

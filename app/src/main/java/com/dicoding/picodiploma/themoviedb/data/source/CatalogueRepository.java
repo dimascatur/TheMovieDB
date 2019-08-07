@@ -154,4 +154,44 @@ public class CatalogueRepository implements CatalogueDataSource {
         });
      return tvShowResult;
     }
+
+    @Override
+    public LiveData<List<MovieEntity>> getAllBookmarkMovies() {
+       return localRepository.getAllBookmarkMovies();
+    }
+
+    @Override
+    public LiveData<MovieEntity> getBookmarkMovieById(String movieId) {
+       return localRepository.getBookmarkMovieById(movieId);
+    }
+
+    @Override
+    public void insertMovie(MovieEntity movieEntity) {
+        localRepository.insertMovie(movieEntity);
+    }
+
+    @Override
+    public void deleteMovie(MovieEntity movieEntity) {
+        localRepository.deleteMovie(movieEntity);
+    }
+
+    @Override
+    public LiveData<List<TvShowEntity>> getAllBookmarkTvShows() {
+        return localRepository.getAllBookmarkTvShows();
+    }
+
+    @Override
+    public LiveData<TvShowEntity> getBookmarkTvShowById(String tvShowId) {
+        return localRepository.getBookmarkTvShowById(tvShowId);
+    }
+
+    @Override
+    public void insertTvShow(TvShowEntity tvShowEntity) {
+        localRepository.insertTvShow(tvShowEntity);
+    }
+
+    @Override
+    public void deleteTvShow(TvShowEntity tvShowEntity) {
+        localRepository.deleteTvShow(tvShowEntity);
+    }
 }
