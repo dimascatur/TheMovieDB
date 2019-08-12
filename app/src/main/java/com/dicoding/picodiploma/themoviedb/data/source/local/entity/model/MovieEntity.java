@@ -32,7 +32,7 @@ public class MovieEntity {
     @ColumnInfo(name = "photo")
     private String photo;
 
-    public MovieEntity(String movieId, String title, String description, String release, String photo) {
+    public MovieEntity(String movieId, String title, String description, String release,String photo) {
         this.movieId = movieId;
         this.title = title;
         this.description = description;
@@ -76,7 +76,4 @@ public class MovieEntity {
         return photo;
     }
 
-    public void setPhoto(String photo) {
-        this.photo = photo;
-    }
 }

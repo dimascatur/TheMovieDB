@@ -10,10 +10,6 @@ public class MovieResponse implements Parcelable {
     private String description;
     private String imgPhoto;
 
-    public MovieResponse() {
-
-    }
-
     public MovieResponse(String id, String title, String description, String release,  String imgPhoto) {
         this.id = id;
         this.title = title;

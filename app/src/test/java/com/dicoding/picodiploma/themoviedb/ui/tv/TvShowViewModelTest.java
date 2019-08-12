@@ -7,8 +7,10 @@ import androidx.lifecycle.Observer;
 import com.dicoding.picodiploma.themoviedb.data.source.CatalogueRepository;
 import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.TvShowEntity;
 import com.dicoding.picodiploma.themoviedb.utils.FakeDataDummy;
+import com.dicoding.picodiploma.themoviedb.utils.LiveDataTestUtil;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -44,10 +46,8 @@ public class TvShowViewModelTest {
 
         when(catalogueRepository.getAllTvShow()).thenReturn(dummyTvShow);
 
-        Observer<List<TvShowEntity>> observer = Mockito.mock(Observer.class);
-
-        viewModel.getTvShow().observeForever(observer);
-
+        List<TvShowEntity> tvShowEntities = LiveDataTestUtil.getValue(viewModel.getTvShow());
+        Assert.assertNotNull(tvShowEntities);
         verify(catalogueRepository).getAllTvShow();
     }
 }

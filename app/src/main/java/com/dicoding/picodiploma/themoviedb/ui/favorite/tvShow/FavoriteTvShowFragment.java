@@ -2,6 +2,10 @@ package com.dicoding.picodiploma.themoviedb.ui.favorite.tvShow;
 
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,15 +15,8 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ProgressBar;
-
 import com.dicoding.picodiploma.themoviedb.R;
 import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.TvShowEntity;
-import com.dicoding.picodiploma.themoviedb.ui.favorite.movie.FavoriteMovieAdapter;
-import com.dicoding.picodiploma.themoviedb.ui.favorite.movie.FavoriteMovieViewModel;
 import com.dicoding.picodiploma.themoviedb.viewmodel.ViewModelFactory;
 
 import java.util.List;
@@ -30,7 +27,6 @@ import java.util.List;
 public class FavoriteTvShowFragment extends Fragment {
     private RecyclerView rvTvShow;
     private FavoriteTvShowAdapter adapter;
-    private FavoriteTvShowViewModel viewModel;
 
     private List<TvShowEntity> tvShowEntities;
 
@@ -72,13 +68,13 @@ public class FavoriteTvShowFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         if (getActivity() != null) {
             progressBar.setVisibility(View.VISIBLE);
-            viewModel = obtainViewModel(getActivity());
+            FavoriteTvShowViewModel viewModel = obtainViewModel(getActivity());
 
-            adapter = new FavoriteTvShowAdapter(getActivity());
+            adapter = new FavoriteTvShowAdapter(FavoriteTvShowFragment.this);
 
             viewModel.getAllBookmarkTvShow().observe(this, tvShows -> {
                 progressBar.setVisibility(View.GONE);
-                adapter.setData(tvShows);
+                adapter.submitList(tvShows);
                 adapter.notifyDataSetChanged();
 
             });

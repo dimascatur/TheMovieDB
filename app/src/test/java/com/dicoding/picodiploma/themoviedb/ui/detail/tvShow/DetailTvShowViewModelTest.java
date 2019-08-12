@@ -32,22 +32,26 @@ public class DetailTvShowViewModelTest {
     @Before
     public void setUp() {
         viewModel = new DetailTvShowViewModel(catalogueRepository);
-        viewModel.setCourseId(tvShowId);
+        viewModel.setTvShowId(tvShowId);
     }
 
     @After
-    public void tearDown(){
+    public void tearDown() {
     }
 
     @Test
     public void getTvShows() {
+
+        TvShowEntity entity = new TvShowEntity("123", "title", "desc", "12-12-12", "url");
+
         MutableLiveData<TvShowEntity> tvShowEntities = new MutableLiveData<>();
+        tvShowEntities.postValue(entity);
 
         when(catalogueRepository.getTvShowById(tvShowId)).thenReturn(tvShowEntities);
 
         Observer<TvShowEntity> observer = mock(Observer.class);
         viewModel.getTvShows().observeForever(observer);
 
-        verify(catalogueRepository).getTvShowById(tvShowId);
+        verify(observer).onChanged(entity);
     }
 }

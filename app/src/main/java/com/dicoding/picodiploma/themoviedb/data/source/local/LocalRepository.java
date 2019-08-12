@@ -3,13 +3,13 @@ package com.dicoding.picodiploma.themoviedb.data.source.local;
 import android.app.Application;
 
 import androidx.lifecycle.LiveData;
+import androidx.paging.DataSource;
 
 import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.MovieEntity;
 import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.TvShowEntity;
 import com.dicoding.picodiploma.themoviedb.data.source.local.room.CatalogueDao;
 import com.dicoding.picodiploma.themoviedb.data.source.local.room.CatalogueDatabase;
 
-import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -25,7 +25,7 @@ public LocalRepository(Application application) {
         mCatalogueDao = database.catalogueDao();
     }
 
-    public LiveData<List<MovieEntity>> getAllBookmarkMovies() {
+    public DataSource.Factory<Integer, MovieEntity> getAllBookmarkMovies() {
         return mCatalogueDao.getAllMovies();
     }
 
@@ -34,24 +34,14 @@ public LocalRepository(Application application) {
     }
 
     public void insertMovie(final MovieEntity movieEntity) {
-        executorService.execute(new Runnable() {
-            @Override
-            public void run() {
-                mCatalogueDao.insertMovie(movieEntity);
-            }
-        });
+        executorService.execute(() -> mCatalogueDao.insertMovie(movieEntity));
     }
 
     public void deleteMovie(final MovieEntity movieEntity) {
-        executorService.execute(new Runnable() {
-            @Override
-            public void run() {
-                mCatalogueDao.deleteMovie(movieEntity);
-            }
-        });
+        executorService.execute(() -> mCatalogueDao.deleteMovie(movieEntity));
     }
 
-    public LiveData<List<TvShowEntity>> getAllBookmarkTvShows() {
+    public DataSource.Factory<Integer, TvShowEntity> getAllBookmarkTvShows() {
         return mCatalogueDao.getAllTvShows();
     }
 
@@ -60,21 +50,11 @@ public LocalRepository(Application application) {
     }
 
     public void insertTvShow(final TvShowEntity tvShowEntity) {
-        executorService.execute(new Runnable() {
-            @Override
-            public void run() {
-                mCatalogueDao.insertTvShow(tvShowEntity);
-            }
-        });
+        executorService.execute(() -> mCatalogueDao.insertTvShow(tvShowEntity));
     }
 
     public void deleteTvShow(final TvShowEntity tvShowEntity) {
-        executorService.execute(new Runnable() {
-            @Override
-            public void run() {
-                mCatalogueDao.deleteTvShow(tvShowEntity);
-            }
-        });
+        executorService.execute(() -> mCatalogueDao.deleteTvShow(tvShowEntity));
     }
 }
 

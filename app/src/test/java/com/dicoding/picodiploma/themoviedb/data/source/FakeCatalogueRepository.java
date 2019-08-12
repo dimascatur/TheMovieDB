@@ -3,6 +3,8 @@ package com.dicoding.picodiploma.themoviedb.data.source;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.paging.LivePagedListBuilder;
+import androidx.paging.PagedList;
 
 import com.dicoding.picodiploma.themoviedb.data.source.local.LocalRepository;
 import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.MovieEntity;
@@ -20,7 +22,7 @@ public class FakeCatalogueRepository implements CatalogueDataSource {
     private final LocalRepository localRepository;
     private final RemoteRepository remoteRepository;
 
-    FakeCatalogueRepository(@NonNull LocalRepository localRepository, @NonNull RemoteRepository remoteRepository) {
+     FakeCatalogueRepository(@NonNull LocalRepository localRepository, @NonNull RemoteRepository remoteRepository) {
         this.localRepository = localRepository;
         this.remoteRepository = remoteRepository;
     }
@@ -58,10 +60,6 @@ public class FakeCatalogueRepository implements CatalogueDataSource {
                 movieResult.postValue(movieList);
             }
 
-            @Override
-            public void onDataNotAvailable() {
-
-            }
         });
         return movieResult;
     }
@@ -86,10 +84,6 @@ public class FakeCatalogueRepository implements CatalogueDataSource {
                 }
             }
 
-            @Override
-            public void onDataNotAvailable() {
-
-            }
         });
 
         return movieResult;
@@ -118,10 +112,6 @@ public class FakeCatalogueRepository implements CatalogueDataSource {
                 tvShowResult.postValue(tvShowList);
             }
 
-            @Override
-            public void onDataNotAvailable() {
-
-            }
         });
         return tvShowResult;
     }
@@ -147,11 +137,49 @@ public class FakeCatalogueRepository implements CatalogueDataSource {
                 }
             }
 
-            @Override
-            public void onDataNotAvailable() {
-
-            }
         });
-        return tvShowResult;
+     return tvShowResult;
+    }
+
+    @Override
+    public LiveData<PagedList<MovieEntity>> getAllBookmarkMovies() {
+        return new LivePagedListBuilder<>(localRepository.getAllBookmarkMovies(), /* page size */ 20).build();
+    }
+
+
+    @Override
+    public LiveData<MovieEntity> getBookmarkMovieById(String movieId) {
+       return localRepository.getBookmarkMovieById(movieId);
+    }
+
+    @Override
+    public void insertMovie(MovieEntity movieEntity) {
+        localRepository.insertMovie(movieEntity);
+    }
+
+    @Override
+    public void deleteMovie(MovieEntity movieEntity) {
+        localRepository.deleteMovie(movieEntity);
+    }
+
+    @Override
+    public LiveData<PagedList<TvShowEntity>> getAllBookmarkTvShows() {
+        return new LivePagedListBuilder<>(localRepository.getAllBookmarkTvShows(), /* page size */ 20).build();
+    }
+
+
+    @Override
+    public LiveData<TvShowEntity> getBookmarkTvShowById(String tvShowId) {
+        return localRepository.getBookmarkTvShowById(tvShowId);
+    }
+
+    @Override
+    public void insertTvShow(TvShowEntity tvShowEntity) {
+        localRepository.insertTvShow(tvShowEntity);
+    }
+
+    @Override
+    public void deleteTvShow(TvShowEntity tvShowEntity) {
+        localRepository.deleteTvShow(tvShowEntity);
     }
 }

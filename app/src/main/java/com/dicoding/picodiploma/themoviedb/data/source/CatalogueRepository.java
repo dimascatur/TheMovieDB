@@ -3,6 +3,8 @@ package com.dicoding.picodiploma.themoviedb.data.source;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.paging.LivePagedListBuilder;
+import androidx.paging.PagedList;
 
 import com.dicoding.picodiploma.themoviedb.data.source.local.LocalRepository;
 import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.MovieEntity;
@@ -58,10 +60,6 @@ public class CatalogueRepository implements CatalogueDataSource {
                 movieResult.postValue(movieList);
             }
 
-            @Override
-            public void onDataNotAvailable() {
-
-            }
         });
         return movieResult;
     }
@@ -86,10 +84,6 @@ public class CatalogueRepository implements CatalogueDataSource {
                 }
             }
 
-            @Override
-            public void onDataNotAvailable() {
-
-            }
         });
 
         return movieResult;
@@ -118,10 +112,6 @@ public class CatalogueRepository implements CatalogueDataSource {
                 tvShowResult.postValue(tvShowList);
             }
 
-            @Override
-            public void onDataNotAvailable() {
-
-            }
         });
         return tvShowResult;
     }
@@ -147,22 +137,18 @@ public class CatalogueRepository implements CatalogueDataSource {
                 }
             }
 
-            @Override
-            public void onDataNotAvailable() {
-
-            }
         });
-     return tvShowResult;
+        return tvShowResult;
     }
 
     @Override
-    public LiveData<List<MovieEntity>> getAllBookmarkMovies() {
-       return localRepository.getAllBookmarkMovies();
+    public LiveData<PagedList<MovieEntity>> getAllBookmarkMovies() {
+        return new LivePagedListBuilder<>(localRepository.getAllBookmarkMovies(), /* page size */ 20).build();
     }
 
     @Override
     public LiveData<MovieEntity> getBookmarkMovieById(String movieId) {
-       return localRepository.getBookmarkMovieById(movieId);
+        return localRepository.getBookmarkMovieById(movieId);
     }
 
     @Override
@@ -176,8 +162,8 @@ public class CatalogueRepository implements CatalogueDataSource {
     }
 
     @Override
-    public LiveData<List<TvShowEntity>> getAllBookmarkTvShows() {
-        return localRepository.getAllBookmarkTvShows();
+    public LiveData<PagedList<TvShowEntity>> getAllBookmarkTvShows() {
+        return new LivePagedListBuilder<>(localRepository.getAllBookmarkTvShows(), /* page size */ 20).build();
     }
 
     @Override

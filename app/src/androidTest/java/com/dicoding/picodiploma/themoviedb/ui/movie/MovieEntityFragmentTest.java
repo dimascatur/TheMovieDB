@@ -1,6 +1,9 @@
 package com.dicoding.picodiploma.themoviedb.ui.movie;
 
+import androidx.test.espresso.Espresso;
 import androidx.test.espresso.IdlingRegistry;
+import androidx.test.espresso.ViewAssertion;
+import androidx.test.espresso.assertion.ViewAssertions;
 import androidx.test.rule.ActivityTestRule;
 
 import com.dicoding.picodiploma.themoviedb.testing.SingleFragmentActivity;
@@ -14,9 +17,11 @@ import org.junit.Rule;
 import org.junit.Test;
 
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 public class MovieEntityFragmentTest {
 
@@ -37,6 +42,8 @@ public class MovieEntityFragmentTest {
 
     @Test
     public void loadMovies() {
+        onView(withId(R.id.rv_movie)).check(ViewAssertions.matches(isDisplayed()));
         onView(withId(R.id.rv_movie)).check(new RecyclerViewItemCountAssertion(10));
+
     }
 }

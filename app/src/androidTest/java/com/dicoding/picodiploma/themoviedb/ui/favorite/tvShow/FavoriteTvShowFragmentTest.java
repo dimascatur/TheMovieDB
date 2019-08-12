@@ -1,4 +1,4 @@
-package com.dicoding.picodiploma.themoviedb.ui.tv;
+package com.dicoding.picodiploma.themoviedb.ui.favorite.tvShow;
 
 import androidx.test.espresso.IdlingRegistry;
 import androidx.test.espresso.assertion.ViewAssertions;
@@ -7,7 +7,6 @@ import androidx.test.rule.ActivityTestRule;
 import com.dicoding.picodiploma.themoviedb.R;
 import com.dicoding.picodiploma.themoviedb.testing.SingleFragmentActivity;
 import com.dicoding.picodiploma.themoviedb.utils.EspressoIdlingResource;
-import com.dicoding.picodiploma.themoviedb.utils.RecyclerViewItemCountAssertion;
 
 import org.junit.After;
 import org.junit.Before;
@@ -15,19 +14,20 @@ import org.junit.Rule;
 import org.junit.Test;
 
 import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
-public class TvShowFragmentTest {
+public class FavoriteTvShowFragmentTest {
+
     @Rule
     public ActivityTestRule<SingleFragmentActivity> activityRule = new ActivityTestRule<>(SingleFragmentActivity.class);
-    private TvShowFragment tvShowFragment = new TvShowFragment();
+    private FavoriteTvShowFragment favoriteTvShowFragment = new FavoriteTvShowFragment();
 
     @Before
-    public  void setUp() {
+    public void setUp() {
         IdlingRegistry.getInstance().register(EspressoIdlingResource.getEspressoIdlingResource());
-        activityRule.getActivity().setFragment(tvShowFragment);
+        activityRule.getActivity().setFragment(favoriteTvShowFragment);
+
     }
 
     @After
@@ -36,8 +36,10 @@ public class TvShowFragmentTest {
     }
 
     @Test
-    public void loadMovies() {
-        onView(withId(R.id.rv_tvShow)).check(ViewAssertions.matches(isDisplayed()));
-        onView(withId(R.id.rv_tvShow)).check(new RecyclerViewItemCountAssertion(10));
+    public void LoadFavoriteMovie() {
+        onView(withId(R.id.rv_favorite_tv)).check(ViewAssertions.matches(isDisplayed()));
     }
+
+
+
 }

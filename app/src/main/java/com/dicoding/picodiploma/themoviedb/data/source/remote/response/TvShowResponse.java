@@ -10,10 +10,6 @@ public class TvShowResponse implements Parcelable {
     private String release;
     private String imgPhoto;
 
-    public TvShowResponse() {
-
-    }
-
     public TvShowResponse(String tvId, String title, String description, String release, String imgPhoto) {
         this.tvId = tvId;
         this.title = title;

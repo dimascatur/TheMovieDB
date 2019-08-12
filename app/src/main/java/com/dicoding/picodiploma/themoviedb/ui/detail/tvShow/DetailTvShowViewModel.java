@@ -6,10 +6,8 @@ import androidx.lifecycle.ViewModel;
 import com.dicoding.picodiploma.themoviedb.data.source.CatalogueRepository;
 import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.TvShowEntity;
 
-import java.util.List;
-
 public class DetailTvShowViewModel extends ViewModel {
-    private String courseId;
+    private String tvShowId;
     private CatalogueRepository catalogueRepository;
 
     public DetailTvShowViewModel(CatalogueRepository mCatalogueRepository) {
@@ -17,15 +15,23 @@ public class DetailTvShowViewModel extends ViewModel {
     }
 
     LiveData<TvShowEntity> getTvShows() {
-        return catalogueRepository.getTvShowById(courseId);
+        return catalogueRepository.getTvShowById(tvShowId);
     }
 
-    void setCourseId(String courseId) {
-        this.courseId = courseId;
+    LiveData<TvShowEntity> getBookmarkTvShow(){
+        return catalogueRepository.getBookmarkTvShowById(tvShowId);
     }
 
-    private String getTvShowId() {
-        return courseId;
+    void setTvShowId(String tvShowId) {
+        this.tvShowId = tvShowId;
+    }
+
+    public void setBookmark(TvShowEntity tvShowEntity) {
+        catalogueRepository.insertTvShow(tvShowEntity);
+    }
+
+    public void setUnBookmark(TvShowEntity tvShowEntity) {
+        catalogueRepository.deleteTvShow(tvShowEntity);
     }
 }
 

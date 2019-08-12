@@ -1,6 +1,7 @@
 package com.dicoding.picodiploma.themoviedb.data.source;
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
+import androidx.paging.DataSource;
 
 import com.dicoding.picodiploma.themoviedb.data.source.local.LocalRepository;
 import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.MovieEntity;
@@ -23,16 +24,18 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doAnswer;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 public class CatalogueRepositoryTest {
 
     @Rule
     public InstantTaskExecutorRule instantTaskExecutorRule = new InstantTaskExecutorRule();
 
-    private LocalRepository local = Mockito.mock(LocalRepository.class);
-    private RemoteRepository remote = Mockito.mock(RemoteRepository.class);
+    private LocalRepository local = mock(LocalRepository.class);
+    private RemoteRepository remote = mock(RemoteRepository.class);
     private FakeCatalogueRepository catalogueRepository = new FakeCatalogueRepository(local, remote);
 
     private ArrayList<MovieResponse> movieResponses = FakeDataDummy.generateRemoteDummyMovies();
@@ -106,9 +109,33 @@ public class CatalogueRepositoryTest {
         }).when(remote).getAllShows(any(RemoteRepository.LoadTvShowsCallback.class));
 
         TvShowEntity result = LiveDataTestUtil.getValue(catalogueRepository.getTvShowById(tvShowId));
+        assertEquals(tvShowResponses.get(0).getTitle(), result.getTitle());
 
         verify(remote, times(1)).getAllShows(any(RemoteRepository.LoadTvShowsCallback.class));
 
-        assertEquals(tvShowResponses.get(0).getTitle(), result.getTitle());
+    }
+
+    @Test
+    public void getBookmarkedMovies(){
+
+        DataSource.Factory<Integer, MovieEntity> dataSourceMovie = mock(DataSource.Factory.class);
+
+        when(local.getAllBookmarkMovies()).thenReturn(dataSourceMovie);
+
+        catalogueRepository.getAllBookmarkMovies();
+
+        verify(local).getAllBookmarkMovies();
+    }
+
+    @Test
+    public void getBookmarkedTvShows() {
+
+        DataSource.Factory<Integer, TvShowEntity> dataSourceTvShow = mock(DataSource.Factory.class);
+
+        when(local.getAllBookmarkTvShows()).thenReturn(dataSourceTvShow);
+
+        catalogueRepository.getAllBookmarkTvShows();
+
+        verify(local).getAllBookmarkTvShows();
     }
 }

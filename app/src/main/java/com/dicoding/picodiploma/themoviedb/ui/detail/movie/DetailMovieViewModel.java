@@ -22,12 +22,8 @@ public class DetailMovieViewModel extends ViewModel {
         return catalogueRepository.getBookmarkMovieById(movieId);
     }
 
-    void setCourseId(String movieId) {
+    void setMovieId(String movieId) {
         this.movieId = movieId;
-    }
-
-    private String getMovieId() {
-        return movieId;
     }
 
     public void setBookmark(MovieEntity movieEntity) {

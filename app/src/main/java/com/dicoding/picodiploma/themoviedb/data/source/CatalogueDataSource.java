@@ -1,6 +1,7 @@
 package com.dicoding.picodiploma.themoviedb.data.source;
 
 import androidx.lifecycle.LiveData;
+import androidx.paging.PagedList;
 
 import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.MovieEntity;
 import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.TvShowEntity;
@@ -17,7 +18,7 @@ public interface CatalogueDataSource {
 
     LiveData<TvShowEntity> getTvShowById(String tvShowId);
 
-    LiveData<List<MovieEntity>> getAllBookmarkMovies();
+    LiveData<PagedList<MovieEntity>> getAllBookmarkMovies();
 
     LiveData<MovieEntity> getBookmarkMovieById(String movieId);
 
@@ -25,7 +26,7 @@ public interface CatalogueDataSource {
 
     void deleteMovie(MovieEntity movieEntity);
 
-    LiveData<List<TvShowEntity>> getAllBookmarkTvShows();
+    LiveData<PagedList<TvShowEntity>> getAllBookmarkTvShows();
 
     LiveData<TvShowEntity> getBookmarkTvShowById(String tvShowId);
 

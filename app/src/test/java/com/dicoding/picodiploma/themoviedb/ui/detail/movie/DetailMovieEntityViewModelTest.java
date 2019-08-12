@@ -13,9 +13,6 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-import java.util.List;
-
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -33,7 +30,7 @@ public class DetailMovieEntityViewModelTest {
     @Before
     public void setUp() {
         viewModel = new DetailMovieViewModel(catalogueRepository);
-        viewModel.setCourseId(movieId);
+        viewModel.setMovieId(movieId);
     }
 
     @After
@@ -42,13 +39,17 @@ public class DetailMovieEntityViewModelTest {
 
     @Test
     public void getMovies() {
+
+        MovieEntity entity = new MovieEntity("123", "title", "desc", "11-11-11", "url");
+
         MutableLiveData<MovieEntity> movieEntities = new MutableLiveData<>();
+        movieEntities.postValue(entity);
 
         when(catalogueRepository.getMovieById(movieId)).thenReturn(movieEntities);
 
         Observer<MovieEntity> observer = mock(Observer.class);
         viewModel.getMovies().observeForever(observer);
 
-        verify(catalogueRepository).getMovieById(movieId);
+        verify(observer).onChanged(entity);
     }
 }

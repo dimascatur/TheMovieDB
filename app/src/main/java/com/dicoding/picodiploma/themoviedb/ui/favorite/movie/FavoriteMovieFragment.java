@@ -28,7 +28,6 @@ import java.util.List;
 public class FavoriteMovieFragment extends Fragment {
     private RecyclerView rvMovie;
     private FavoriteMovieAdapter adapter;
-    private FavoriteMovieViewModel viewModel;
 
     private List<MovieEntity> movieEntities;
 
@@ -70,13 +69,13 @@ public class FavoriteMovieFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         if (getActivity() != null) {
             progressBar.setVisibility(View.VISIBLE);
-            viewModel = obtainViewModel(getActivity());
+            FavoriteMovieViewModel viewModel = obtainViewModel(getActivity());
 
-            adapter = new FavoriteMovieAdapter(getActivity());
+            adapter = new FavoriteMovieAdapter(FavoriteMovieFragment.this);
 
             viewModel.getAllBookmarkMovies().observe(this, movies -> {
                 progressBar.setVisibility(View.GONE);
-                adapter.setData(movies);
+                adapter.submitList(movies);
                 adapter.notifyDataSetChanged();
 
             });

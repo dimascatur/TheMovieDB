@@ -1,5 +1,6 @@
 package com.dicoding.picodiploma.themoviedb.ui.favorite.tvShow;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.Fragment;
+import androidx.paging.PagedListAdapter;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.request.RequestOptions;
@@ -17,25 +20,16 @@ import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.TvShow
 import com.dicoding.picodiploma.themoviedb.ui.detail.tvShow.DetailTvShowActivity;
 import com.dicoding.picodiploma.themoviedb.utils.GlideApp;
 
-import java.util.ArrayList;
-import java.util.List;
+public class FavoriteTvShowAdapter extends PagedListAdapter<TvShowEntity, FavoriteTvShowAdapter.FavoriteTvShowViewHolder> {
+    private Fragment fragment;
 
-public class FavoriteTvShowAdapter extends RecyclerView.Adapter<FavoriteTvShowAdapter.FavoriteTvShowViewHolder> {
-    private final FragmentActivity mFragment;
-    private List<TvShowEntity> data = new ArrayList<>();
-
-    public FavoriteTvShowAdapter(FragmentActivity mFragment) {
-        this.mFragment = mFragment;
+    protected FavoriteTvShowAdapter(@NonNull DiffUtil.ItemCallback<TvShowEntity> diffCallback) {
+        super(diffCallback);
     }
 
-    private List<TvShowEntity> getListData() {
-        return data;
-    }
-
-    void setData(List<TvShowEntity> tvShows) {
-        if (tvShows == null) return;
-        this.data.clear();
-        this.data.addAll(tvShows);
+    FavoriteTvShowAdapter(Fragment fragment) {
+        super(DIFF_CALLBACK);
+        this.fragment = fragment;
     }
 
     @NonNull
@@ -47,25 +41,21 @@ public class FavoriteTvShowAdapter extends RecyclerView.Adapter<FavoriteTvShowAd
 
     @Override
     public void onBindViewHolder(@NonNull FavoriteTvShowViewHolder holder, int position) {
-        holder.TextViewNameTvShow.setText(data.get(position).getTitle());
-        holder.TextViewReleaseTvShow.setText(data.get(position).getRelease());
-        holder.TextViewDescriptionTvShow.setText(data.get(position).getDescription());
+        TvShowEntity tvShowEntity = getItem(position);
+        holder.TextViewNameTvShow.setText(tvShowEntity.getTitle());
+        holder.TextViewReleaseTvShow.setText(tvShowEntity.getRelease());
+        holder.TextViewDescriptionTvShow.setText(tvShowEntity.getDescription());
 
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(holder.itemView.getContext(), DetailTvShowActivity.class);
-            intent.putExtra(DetailTvShowActivity.EXTRA_TV, getListData().get(position).getTvShowId());
+            intent.putExtra(DetailTvShowActivity.EXTRA_TV, tvShowEntity.getTvShowId());
             holder.itemView.getContext().startActivity(intent);
         });
 
         GlideApp.with(holder.itemView.getContext())
-                .load(getListData().get(position).getPhoto())
+                .load(tvShowEntity.getPhoto())
                 .apply(RequestOptions.placeholderOf(R.drawable.ic_loading).error(R.drawable.ic_error))
                 .into(holder.ImageViewPhotoTvShow);
-    }
-
-    @Override
-    public int getItemCount() {
-        return getListData().size();
     }
 
     class FavoriteTvShowViewHolder extends RecyclerView.ViewHolder {
@@ -82,4 +72,17 @@ public class FavoriteTvShowAdapter extends RecyclerView.Adapter<FavoriteTvShowAd
             ImageViewPhotoTvShow = itemView.findViewById(R.id.img_item_photo);
         }
     }
+    private static DiffUtil.ItemCallback<TvShowEntity> DIFF_CALLBACK =
+            new DiffUtil.ItemCallback<TvShowEntity>() {
+                @Override
+                public boolean areItemsTheSame(TvShowEntity oldTvShow, TvShowEntity newTvShow) {
+                    return oldTvShow.getTitle().equals(newTvShow.getTitle());
+                }
+
+                @SuppressLint("DiffUtilEquals")
+                @Override
+                public boolean areContentsTheSame(TvShowEntity oldTvShow, @NonNull TvShowEntity newTvShow) {
+                    return oldTvShow.equals(newTvShow);
+                }
+            };
 }

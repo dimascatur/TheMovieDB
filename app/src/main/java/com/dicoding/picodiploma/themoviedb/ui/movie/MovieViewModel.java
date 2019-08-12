@@ -16,7 +16,7 @@ public class MovieViewModel extends ViewModel {
         this.catalogueRepository = mCatalogueRepository;
     }
 
-    LiveData<List<MovieEntity>> getCourse() {
+    LiveData<List<MovieEntity>> getMovie() {
         return catalogueRepository.getAllMovies();
 
     }

@@ -15,7 +15,7 @@ public class RemoteRepository {
     private JsonHelper jsonHelper;
     private final long SERVICE_LATENCY_IN_MILLIS = 2000;
 
-    private RemoteRepository(JsonHelper jsonHelper) {
+    RemoteRepository(JsonHelper jsonHelper) {
         this.jsonHelper = jsonHelper;
     }
 
@@ -48,12 +48,10 @@ public class RemoteRepository {
     public interface LoadMoviesCallback {
         void onAllMoviesReceived(List<MovieResponse> movieResponses);
 
-        void onDataNotAvailable();
     }
 
     public interface LoadTvShowsCallback {
         void onAllTvShowsReceived(List<TvShowResponse> tvShowResponses);
 
-        void onDataNotAvailable();
     }
 }

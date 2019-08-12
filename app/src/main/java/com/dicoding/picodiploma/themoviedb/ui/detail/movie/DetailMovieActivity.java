@@ -32,6 +32,7 @@ public class DetailMovieActivity extends AppCompatActivity {
     private DetailMovieViewModel viewModel;
     private Boolean state = false;
     private MovieEntity movieEntity;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +54,7 @@ public class DetailMovieActivity extends AppCompatActivity {
             String movieId = extras.getString(EXTRA_MOVIE);
             if (movieId != null) {
                 progressBar.setVisibility(View.VISIBLE);
-                viewModel.setCourseId(movieId);
+                viewModel.setMovieId(movieId);
             }
 
         }
@@ -72,11 +73,7 @@ public class DetailMovieActivity extends AppCompatActivity {
         this.menu = menu;
 
         viewModel.getBookmarkMovie().observe(this, movieEntity -> {
-            if (movieEntity == null) {
-                state = false;
-            } else {
-                state = true;
-            }
+            state = movieEntity != null;
             setBookmarkState(state);
 
         });
@@ -85,20 +82,23 @@ public class DetailMovieActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == android.R.id.home) {
+        if (item.getItemId() == android.R.id.home) {
             onBackPressed();
         } else if (item.getItemId() == R.id.action_bookmark) {
-            if (state) {
-                viewModel.setUnBookmark(movieEntity);
-                state = false;
-            } else {
-                viewModel.setBookmark(movieEntity);
-                state = true;
+            if (movieEntity != null) {
+                if (state) {
+                    viewModel.setUnBookmark(movieEntity);
+                    state = false;
+                } else {
+                    viewModel.setBookmark(movieEntity);
+                    state = true;
+                }
+                setBookmarkState(state);
             }
-            setBookmarkState(state);
         }
         return super.onOptionsItemSelected(item);
     }
+
 
     private void setBookmarkState(boolean state) {
         if (menu == null) return;

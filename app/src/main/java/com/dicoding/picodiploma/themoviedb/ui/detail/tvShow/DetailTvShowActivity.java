@@ -20,8 +20,6 @@ import com.dicoding.picodiploma.themoviedb.data.source.local.entity.model.TvShow
 import com.dicoding.picodiploma.themoviedb.utils.GlideApp;
 import com.dicoding.picodiploma.themoviedb.viewmodel.ViewModelFactory;
 
-import java.util.List;
-
 public class DetailTvShowActivity extends AppCompatActivity {
     public static final String EXTRA_TV = "extra_tvShow";
 
@@ -30,10 +28,11 @@ public class DetailTvShowActivity extends AppCompatActivity {
     private ImageView imageView;
     private ImageView imageBg;
     private ProgressBar progressBar;
-
-    private DetailTvShowViewModel viewModel;
     private Menu menu;
+    private DetailTvShowViewModel viewModel;
+    private boolean state = false;
 
+    private TvShowEntity tvShowEntity;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,16 +55,48 @@ public class DetailTvShowActivity extends AppCompatActivity {
             String tvShowId = extras.getString(EXTRA_TV);
             if (tvShowId != null) {
                 progressBar.setVisibility(View.VISIBLE);
-                viewModel.setCourseId(tvShowId);
+                viewModel.setTvShowId(tvShowId);
             }
 
         }
         viewModel.getTvShows().observe(this, tvShow -> {
             if (tvShow != null) {
+                tvShowEntity = tvShow;
                 populateCourse(tvShow);
                 progressBar.setVisibility(View.GONE);
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_detail, menu);
+        this.menu = menu;
+
+        viewModel.getBookmarkTvShow().observe(this, tvShowEntity -> {
+            state = tvShowEntity != null;
+            setBookmarkState(state);
+        });
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        } else if (item.getItemId() == R.id.action_bookmark) {
+            if (tvShowEntity != null) {
+                if (state) {
+                    viewModel.setUnBookmark(tvShowEntity);
+                    state = false;
+                } else {
+                    viewModel.setBookmark(tvShowEntity);
+                    state = true;
+                }
+                setBookmarkState(state);
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void setBookmarkState(boolean state) {
@@ -95,14 +126,6 @@ public class DetailTvShowActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            onBackPressed();
-        }
-        return super.onOptionsItemSelected(item);
-
-    }
     @NonNull
     private static DetailTvShowViewModel obtainViewModel(AppCompatActivity activity) {
 
